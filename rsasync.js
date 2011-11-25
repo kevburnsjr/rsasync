@@ -37,7 +37,7 @@ var RSAGenerateAsync = function (B, E, callback) {
                 rsa.dmp1 = rsa.d.mod(p1);
                 rsa.dmq1 = rsa.d.mod(q1);
                 rsa.coeff = rsa.q.modInverse(rsa.p);
-                setTimeout(function(){callback(rsa)},0); // escape
+                setTimeout(function(){callback()},0); // escape
             } else {
                 setTimeout(loop1,0);
             }
@@ -132,7 +132,7 @@ var bnpFromNumberAsync = function (a,b,c,callback) {
         bnp.dAddOffset(2,0);
         if(bnp.bitLength() > a) bnp.subTo(BigInteger.ONE.shiftLeft(a-1),bnp);
         if(bnp.isProbablePrime(b)) {
-            setTimeout(function(){callback()},0);
+            setTimeout(function(){callback()},0); // escape
         } else {
             setTimeout(bnpfn1,0);
         }
